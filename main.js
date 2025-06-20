@@ -1,10 +1,10 @@
 // js/main.js
 
-import { configurarInterface } from './ui-utils.js';
-import { adicionarPeca, obterPecas, setOnPecasChangeCallback } from './pecas-manager.js'; // Import setOnPecasChangeCallback
-import { calcularMelhorCorte } from './corte-logic.js';
-import { atualizarChapaAtual, exportarImagemAtual } from './display-utils.js'; // Corrected import
-import { obterConfiguracoesChapa, atualizarParametrosChapa, setOnConfigChangeCallback } from './chapa-config.js'; // Import atualizaParametrosChapa and setOnConfigChangeCallback
+import { configurarInterface } from '/ui-utils.js';
+import { adicionarPeca, obterPecas, setOnPecasChangeCallback } from '/pecas-manager.js'; // Import setOnPecasChangeCallback
+import { calcularMelhorCorte } from '/corte-logic.js';
+import { atualizarChapaAtual, exportarImagemAtual } from '/display-utils.js'; // Corrected import
+import { obterConfiguracoesChapa, atualizarParametrosChapa, setOnConfigChangeCallback } from '/chapa-config.js'; // Import atualizaParametrosChapa and setOnConfigChangeCallback
 
 let chapas = [];
 let chapaAtualIndex = 0;
