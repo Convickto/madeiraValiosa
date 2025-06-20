@@ -1,0 +1,234 @@
+/* style.css */
+
+/* Variáveis CSS para cores e estilos comuns */
+:root {
+    --cor-principal: #00ffe1;
+    --cor-texto-claro: #e0e0e0;
+    --cor-texto-escuro: #000;
+    --fundo-corpo: #2e1d0e;
+    --fundo-input-area: rgba(30, 30, 30, 0.9);
+    --fundo-output-area: rgba(40, 40, 40, 0.95);
+    --fundo-chapa-base: #3e2e20;
+    --fundo-canvas-default: #deb887; /* Cor de MDF */
+    --sombra-escura: 0 0 10px var(--cor-texto-escuro);
+    --sombra-clara-chapa: inset 0 0 10px var(--cor-texto-escuro), 0 0 20px var(--cor-texto-escuro);
+    --gradiente-input-btn: linear-gradient(135deg, #6c6c6c, #2e2e2e);
+    --gradiente-input-btn-hover: linear-gradient(135deg, #8c8c8c, #3e3e3e);
+    --gradiente-nav-btn: linear-gradient(145deg, #555, #222);
+    --gradiente-nav-btn-hover: linear-gradient(145deg, #777, #333);
+    --borda-fina: 1px solid #444;
+    --borda-media: 2px solid #aaa;
+    --radius-pequeno: 6px;
+    --radius-medio: 8px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('https://img.freepik.com/fotos-gratis/pavimento-parquet-de-madeira_1219-22.jpg?ga=GA1.1.539377123.1742743576&semt=ais_hybrid&w=740') repeat;
+  background-color: var(--fundo-corpo);
+  color: var(--cor-texto-claro);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2em;
+  color: var(--cor-principal);
+  text-shadow: 0 0 8px var(--cor-principal), 0 0 20px #007f6e;
+  margin-bottom: 30px;
+}
+
+/* Estilos base para todos os inputs, selects e botões */
+.input-area input,
+.input-area button,
+.input-group input,
+.input-group select,
+.controle-chapas button {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: var(--radius-pequeno);
+    border: none;
+    outline: none;
+    color: var(--cor-texto-claro);
+    box-shadow: inset 0 0 3px var(--cor-texto-escuro), 0 0 4px var(--cor-texto-escuro);
+    transition: all 0.3s ease;
+}
+
+/* Estilos específicos para inputs e selects */
+.input-area input,
+.input-group input,
+.input-group select {
+    background: linear-gradient(135deg, #4c4c4c, #2e2e2e); /* Tom mais escuro para inputs */
+}
+
+.input-area input::placeholder {
+  color: #bbb;
+}
+
+/* Estilos para botões gerais */
+.input-area button {
+  background: var(--gradiente-input-btn);
+}
+
+.input-area button:hover {
+  background: var(--gradiente-input-btn-hover);
+  cursor: pointer;
+}
+
+/* Estilos para botões de navegação e exportar */
+.controle-chapas button {
+  background: var(--gradiente-nav-btn);
+  border-radius: var(--radius-medio); /* Botões de controle um pouco mais arredondados */
+  box-shadow: 0 2px 5px var(--cor-texto-escuro);
+  font-weight: bold;
+}
+
+.controle-chapas button:hover {
+  background: var(--gradiente-nav-btn-hover);
+  cursor: pointer;
+}
+
+/* Estrutura das áreas principais */
+.input-area,
+.output {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--sombra-clara-chapa);
+  box-sizing: border-box;
+}
+
+.input-area {
+  background: var(--fundo-input-area);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.output {
+  background: var(--fundo-output-area);
+}
+
+.input-group {
+    display: flex;
+    max-width: 100%; /* Ajuste que você descobriu! */
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    /* Regras para alinhar e limitar largura dos grupos de input */
+    max-width: 450px; /* Mantido para manter uma largura máxima em telas grandes */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-group label {
+    flex-basis: 100%;
+    min-width: 100px;
+    text-align: right;
+}
+
+/* Regras para os inputs e selects dentro do input-group */
+.input-group input,
+.input-group select {
+    flex-grow: 1;
+    max-width: calc(100% - 110px);
+}
+
+/* Regras para os inputs de peça (largura, altura, quantidade) e botões que não estão em input-group */
+.input-area input:not(#chapaLargura):not(#chapaAltura):not(#precoChapa):not(#espessuraPeca),
+.input-area button {
+    max-width: 300px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#listaPecas {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#listaPecas li {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 10px;
+  margin: 5px 0;
+  border-left: 4px solid var(--cor-principal);
+  box-shadow: inset 0 0 5px var(--cor-texto-escuro);
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chapa {
+  margin-top: 10px;
+  padding: 10px;
+  background: var(--fundo-chapa-base);
+  border: var(--borda-fina);
+  border-radius: var(--radius-pequeno);
+  color: var(--cor-texto-claro);
+  text-shadow: 1px 1px var(--cor-texto-escuro);
+}
+
+canvas {
+  display: block;
+  margin: 0 auto 20px;
+  border: var(--borda-media);
+  background-color: var(--fundo-canvas-default);
+  box-shadow: var(--sombra-escura);
+  max-width: 100%;
+  height: auto;
+}
+
+.controle-chapas {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+hr {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: rgba(255,255,255,0.1);
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* Responsividade */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.4em;
+  }
+  .input-area {
+    padding: 15px;
+  }
+  canvas {
+    width: 100% !important;
+  }
+  .input-group {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 100%;
+  }
+  .input-group label {
+    flex-basis: auto;
+    text-align: left;
+  }
+  .input-area input:not(#chapaLargura):not(#chapaAltura):not(#precoChapa):not(#espessuraPeca),
+  .input-area button,
+  #listaPecas,
+  hr {
+    max-width: 100%;
+  }
+}

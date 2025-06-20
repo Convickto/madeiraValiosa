@@ -1,0 +1,68 @@
+ 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Corte de Chapas MDF</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <h1>Simulador de Corte de Chapas MDF</h1>
+  <div class="input-area">
+    <p id="mensagemStatus" style="text-align: center; color: var(--cor-principal); display: none;"></p>
+    
+    <div class="input-group">
+        <label for="chapaLargura">Largura da Chapa (mm):</label>
+        <input id="chapaLargura" type="number" value="2750">
+    </div>
+    <div class="input-group">
+        <label for="chapaAltura">Altura da Chapa (mm):</label>
+        <input id="chapaAltura" type="number" value="1850">
+    </div>
+    <div class="input-group">
+        <label for="precoChapa">Preço da Chapa (R$):</label>
+        <input id="precoChapa" type="number" value="100.00" step="0.01">
+    </div>
+    <div class="input-group">
+        <label for="tipoMadeira">Tipo de Madeira:</label>
+        <select id="tipoMadeira">
+            <option value="MDF">MDF</option>
+            <option value="Compensado">Compensado</option>
+            <option value="MDP">MDP</option>
+            <option value="Madeira Maciça">Madeira Maciça</option>
+            <option value="Outro">Outro</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <label for="espessuraPeca">Espessura das Peças (mm):</label>
+        <input id="espessuraPeca" type="number" value="15">
+    </div>
+
+    <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 0;">
+
+    <input id="largura" type="number" placeholder="Largura da peça (mm)" />
+    <input id="altura" type="number" placeholder="Altura da peça (mm)" />
+    <input id="quantidade" type="number" placeholder="Quantidade" />
+    <button onclick="adicionarPeca()">Adicionar Peça</button>
+    <button onclick="calcularCorte()">Calcular Cortes</button>
+    <ul id="listaPecas"></ul>
+  </div>
+  <div class="output" id="resultado"></div>
+
+  <div class="controle-chapas">
+    <button onclick="anteriorChapa()" class="navegacao">Anterior</button>
+    <button onclick="proximaChapa()" class="navegacao">Próxima</button>
+    <button onclick="exportarImagem()" class="exportar">Exportar Imagem da Chapa</button>
+  </div>
+
+  <canvas id="canvas"></canvas>
+  <p id="chapaInfo" style="text-align: center;"><strong>Chapa de <span id="displayLarguraChapa"></span>x<span id="displayAlturaChapa"></span>mm</strong></p> 
+
+  <script type="module" src="./js/main.js">
+
+  </script>
+
+</body>
+</html>
